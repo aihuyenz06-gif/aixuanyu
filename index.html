@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爱玄语 – Học tiếng Trung cùng Ái Huyền</title>
+<meta name="description" content="爱玄汉 là website học tiếng Trung cùng Ái Huyền, hỗ trợ tra pinyin, nghĩa tiếng Việt, nghe phát âm và luyện viết chữ Hán.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="logo" href="#">汉语<span>阅读室</span></a>
+    <nav>
+      <a href="#library">Bài đọc</a>
+      <a href="#reader">Tra từ</a>
+      <a href="#writing">Luyện viết</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-text">
+        <p class="eyebrow">CHINESE READING · HSK 5</p>
+        <h1>Mỗi ngày một chút,<br><span>tiếng Trung tiến bộ hơn.</span></h1>
+        <p>Đọc bài hay, tra pinyin, hiểu nghĩa tiếng Việt và luyện viết từng nét chữ Hán.</p>
+        <a class="primary-btn" href="#library">Khám phá bài đọc ↓</a>
+      </div>
+      <div class="hero-character">学</div>
+    </section>
+
+    <section class="section" id="library">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">01 · READING LIBRARY</p>
+          <h2>Thư viện bài đọc</h2>
+          <p class="muted">Mở bài gốc trên Mandarin Bean, sau đó dán đoạn được phép sử dụng vào công cụ học bên dưới.</p>
+        </div>
+        <a class="text-link" href="https://mandarinbean.com/all-lessons/" target="_blank" rel="noopener noreferrer">
+          Mở Mandarin Bean ↗
+        </a>
+      </div>
+
+      <div class="lesson-grid">
+        <article class="lesson-card">
+          <div class="lesson-icon">书</div>
+          <span class="tag">ĐỌC HIỂU</span>
+          <h3>阅读与理解</h3>
+          <p>Đọc bài tiếng Trung và tìm hiểu từ vựng trong ngữ cảnh.</p>
+          <a href="https://mandarinbean.com/all-lessons/" target="_blank" rel="noopener noreferrer">Tìm bài gốc ↗</a>
+        </article>
+
+        <article class="lesson-card">
+          <div class="lesson-icon">词</div>
+          <span class="tag">TỪ VỰNG</span>
+          <h3>词汇与表达</h3>
+          <p>Chọn bài phù hợp để học từ mới và cách diễn đạt.</p>
+          <a href="https://mandarinbean.com/all-lessons/" target="_blank" rel="noopener noreferrer">Tìm bài gốc ↗</a>
+        </article>
+
+        <article class="lesson-card">
+          <div class="lesson-icon">听</div>
+          <span class="tag">NGHE HIỂU</span>
+          <h3>听力与练习</h3>
+          <p>Luyện nghe với bài đọc và công cụ phát âm tiếng Trung.</p>
+          <a href="https://mandarinbean.com/all-lessons/" target="_blank" rel="noopener noreferrer">Tìm bài gốc ↗</a>
+        </article>
+      </div>
+      <p class="notice">Các thẻ trên dẫn đến thư viện bài gốc, không phải ba bài riêng biệt. Hãy chọn bài HSK 5 trong Mandarin Bean và chỉ sử dụng nội dung theo quyền truy cập và điều khoản của nguồn.</p>
+    </section>
+
+    <section class="section reader-section" id="reader">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">02 · SMART READER</p>
+          <h2>Góc đọc thông minh</h2>
+          <p class="muted">Dán đoạn văn bạn được phép sử dụng. Rê chuột lên từ để xem pinyin và nghĩa.</p>
+        </div>
+      </div>
+
+      <div class="reader-layout">
+        <div class="panel">
+          <label for="chineseInput">Đoạn văn tiếng Trung giản thể</label>
+          <textarea id="chineseInput" rows="7" placeholder="请在这里粘贴你正在学习的中文文章……">学习一门新的语言需要时间和耐心。每天坚持阅读，不但可以增加词汇量，还能帮助我们了解不同的文化。</textarea>
+          <div class="button-row">
+            <button class="primary-btn" id="renderBtn">Hiển thị bài đọc</button>
+            <button class="secondary-btn" id="clearBtn">Xóa nội dung</button>
+          </div>
+          <div class="reader-tools">
+            <button class="secondary-btn" id="speakBtn">🔊 Nghe tiếng Trung</button>
+            <button class="secondary-btn" id="stopSpeakBtn">■ Dừng nghe</button>
+          </div>
+          <p class="small-note">Âm thanh sử dụng giọng tiếng Trung có sẵn trong trình duyệt. Chất lượng phụ thuộc vào máy tính của bạn.</p>
+        </div>
+
+        <div class="panel reading-panel">
+          <div class="reading-top">
+            <span class="tag">BẢN ĐỌC</span>
+            <span id="wordCount" class="muted">0 ký tự</span>
+          </div>
+          <div id="readingText" class="reading-text">
+            <p class="muted">Bài đọc sẽ xuất hiện ở đây.</p>
+          </div>
+          
+<div id="wordTooltip" class="word-tooltip" hidden>
+  <div class="tooltip-top">
+    <div>
+      <div id="tooltipWord" class="tooltip-word"></div>
+      <div id="tooltipPinyin" class="tooltip-pinyin"></div>
+      <div id="tooltipMeaning" class="tooltip-meaning"></div>
+    </div>
+    <button id="tooltipSpeakBtn" class="tooltip-action" type="button">🔊 Phát âm</button>
+  </div>
+
+  <div class="tooltip-writing">
+    <div id="tooltipWriter"></div>
+    <div class="tooltip-writing-info">
+      <strong>Cách viết chữ Hán</strong>
+      <p id="tooltipWritingLabel">Hoạt hình thứ tự từng nét</p>
+      <button id="tooltipReplayBtn" class="tooltip-action" type="button">↻ Phát lại nét</button>
+    </div>
+  </div>
+</div>
+
+        </div>
+      </div>
+
+      <div class="panel dictionary-panel">
+        <div>
+          <p class="eyebrow">PERSONAL DICTIONARY</p>
+          <h3>Từ điển cá nhân</h3>
+          <p class="muted">Nhấp vào một từ trong bài đọc để đưa từ đó vào ô bên dưới. Bạn có thể tự thêm nghĩa tiếng Việt.</p>
+        </div>
+        <div class="dictionary-form">
+          <label for="newWord">Từ tiếng Trung</label>
+          <input id="newWord" placeholder="Ví dụ: 坚持">
+          <label for="newMeaning">Nghĩa tiếng Việt</label>
+          <input id="newMeaning" placeholder="Ví dụ: kiên trì">
+          <button class="primary-btn" id="saveWordBtn">Lưu từ vựng</button>
+        </div>
+        <p id="dictionaryStatus" class="small-note" aria-live="polite"></p>
+        <div id="savedWords" class="saved-words"></div>
+      </div>
+    </section>
+
+    <section class="section writing-section" id="writing">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">03 · STROKE PRACTICE</p>
+          <h2>Luyện viết từng nét</h2>
+          <p class="muted">Chọn một chữ Hán, xem hoạt hình thứ tự nét rồi thử tự viết theo hướng dẫn.</p>
+        </div>
+      </div>
+
+      <div class="writing-layout">
+        <div class="panel writing-controls">
+          <label for="characterInput">Chữ Hán cần luyện</label>
+          <input id="characterInput" maxlength="1" value="学" placeholder="Nhập một chữ">
+          <p class="small-note">Nên nhập từng chữ Hán giản thể để xem thứ tự nét.</p>
+          <div class="button-column">
+            <button class="primary-btn" id="showCharacterBtn">Hiển thị chữ</button>
+            <button class="secondary-btn" id="animateBtn">▶ Phát hoạt hình</button>
+            <button class="secondary-btn" id="quizBtn">✍ Bắt đầu tự viết</button>
+            <button class="secondary-btn" id="resetWriterBtn">↻ Làm lại</button>
+          </div>
+          <p id="writingStatus" class="small-note" aria-live="polite">Nhập chữ rồi chọn “Hiển thị chữ”.</p>
+        </div>
+
+        <div class="panel stroke-panel">
+          <div id="hanziWriter" aria-label="Khu vực hoạt hình thứ tự nét"></div>
+          <p class="muted center">Hoạt hình thứ tự nét · Kéo chuột hoặc chạm màn hình khi luyện viết</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tips">
+      <p class="eyebrow">STUDY ROUTINE</p>
+      <h2>Cách học gợi ý</h2>
+      <div class="routine-grid">
+        <div><strong>01</strong><h3>Đọc</h3><p>Chọn bài phù hợp với trình độ của bạn.</p></div>
+        <div><strong>02</strong><h3>Tra từ</h3><p>Rê chuột lên từ và bổ sung nghĩa còn thiếu.</p></div>
+        <div><strong>03</strong><h3>Nghe</h3><p>Nghe lại bài, chú ý nhịp câu và thanh điệu.</p></div>
+        <div><strong>04</strong><h3>Viết</h3><p>Xem thứ tự nét và luyện viết từng chữ.</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>汉语阅读室 · Góc học tiếng Trung của bạn</p>
+    <p class="small-note">Công cụ học độc lập, không phải sản phẩm chính thức hay đối tác của Mandarin Bean.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/pinyin-pro@3.26.0/dist/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
